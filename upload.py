@@ -29,25 +29,22 @@ def main():
         # 切换到D:\img目录
         os.chdir(destination_dir)
         
-        # 添加图片到Git仓库
-        subprocess.run(["git", "add", image_name], check=True)
+        # # 添加图片到Git仓库
+        # subprocess.run(["git", "add", image_name], check=True)
         
-        # 提交更改
+        # # 提交更改
         # subprocess.run(["git", "commit", "-m", f"添加图片 {image_name}"], check=True)
 
-        # 添加图片到Git仓库
-        subprocess.run(["git", "add", image_name], check=True)
-
-        # 检查是否有要提交的更改
-        result = subprocess.run(["git", "diff", "--staged", "--quiet"])
-        if result.returncode != 0:
-            # 提交更改
-            subprocess.run(["git", "commit", "-m", f"添加图片 {image_name}"], check=True)
-        else:
-            print(f"图片 {image_name} 已经在Git仓库中，无需提交。")
+        # # 添加图片到Git仓库
+        # subprocess.run(["git", "add", image_name], check=True)
         
         # 推送到远程仓库
-        subprocess.run(["git", "push"], check=True)
+        # subprocess.run(["git", "push"], check=True)
+
+        os.system(f'git add {image_name}')
+        os.system(f'git commit -m "添加图片 {image_name}"')
+        os.system('git push')
+        
         
         print("图片已成功推送到远程Git仓库")
     except subprocess.CalledProcessError as e:
