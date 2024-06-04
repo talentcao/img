@@ -30,7 +30,7 @@ def main():
         os.chdir(destination_dir)
         
         # 添加图片到Git仓库
-        subprocess.run(["git", "add", image_name], check=True)
+        subprocess.run(["git", "add", "."], check=True)
         
         # 提交更改
         subprocess.run(["git", "commit", "-m", f"添加图片 {image_name}"], check=True)
