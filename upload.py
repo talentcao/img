@@ -33,7 +33,18 @@ def main():
         subprocess.run(["git", "add", image_name], check=True)
         
         # 提交更改
-        subprocess.run(["git", "commit", "-m", f"添加图片 {image_name}"], check=True)
+        # subprocess.run(["git", "commit", "-m", f"添加图片 {image_name}"], check=True)
+
+        # 添加图片到Git仓库
+        subprocess.run(["git", "add", image_name], check=True)
+
+        # 检查是否有要提交的更改
+        result = subprocess.run(["git", "diff", "--staged", "--quiet"])
+        if result.returncode != 0:
+            # 提交更改
+            subprocess.run(["git", "commit", "-m", f"添加图片 {image_name}"], check=True)
+        else:
+            print(f"图片 {image_name} 已经在Git仓库中，无需提交。")
         
         # 推送到远程仓库
         subprocess.run(["git", "push"], check=True)
