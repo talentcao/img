@@ -28,19 +28,6 @@ def main():
     try:
         # 切换到D:\img目录
         os.chdir(destination_dir)
-        
-        # # 添加图片到Git仓库
-        # subprocess.run(["git", "add", image_name], check=True)
-        
-        # # 提交更改
-        # subprocess.run(["git", "commit", "-m", f"添加图片 {image_name}"], check=True)
-
-        # # 添加图片到Git仓库
-        # subprocess.run(["git", "add", image_name], check=True)
-        
-        # 推送到远程仓库
-        # subprocess.run(["git", "push"], check=True)
-
         os.system(f'git add {image_name}')
         os.system(f'git commit -m "添加图片 {image_name}"')
         os.system('git push')
